@@ -6,6 +6,9 @@ public struct User: Codable, Equatable {
     public var premium = false
     public var rated = false
     public var created = Date()
+    public var price = Double()
+    public var quantity = Int()
+    public var currency = Currency.euro
     
     public init() { }
     
