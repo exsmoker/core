@@ -9,7 +9,7 @@ public final class Smoke {
         formatter.unitsStyle = .abbreviated
     }
     
-    public var stroke: String {
+    public var streak: String {
         formatter.string(from: hits.last!, to: .init())!
     }
 }
