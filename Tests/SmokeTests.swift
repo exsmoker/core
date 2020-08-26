@@ -10,6 +10,6 @@ final class SmokeTests: XCTestCase {
     
     func testStreak() {
         smoke.hits = [.init(timeIntervalSinceNow: -500)]
-        XCTAssertEqual("8m 20s", smoke.streak)
+        XCTAssertEqual("8m", smoke.streak)
     }
 }

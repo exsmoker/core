@@ -5,7 +5,7 @@ public final class Smoke {
     private let formatter = DateComponentsFormatter()
     
     public init() {
-        formatter.allowedUnits = [.day, .hour, .minute, .second]
+        formatter.allowedUnits = [.day, .hour, .minute]
         formatter.unitsStyle = .abbreviated
     }
     
