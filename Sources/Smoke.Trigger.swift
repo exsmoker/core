@@ -13,7 +13,7 @@ extension Smoke {
         cold,
         tired
         
-        var title: String {
+        public var title: String {
             "Trigger.title.\(self)"
         }
     }
