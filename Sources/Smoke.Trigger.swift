@@ -1,7 +1,7 @@
 import Foundation
 
 extension Smoke {
-    public enum Trigger: Int, Codable, CaseIterable, Identifiable {
+    public enum Trigger: Int, Codable, CaseIterable {
         case
         people,
         offered,
@@ -13,10 +13,6 @@ extension Smoke {
         none,
         cold,
         tired
-        
-        public var id: Self {
-            self
-        }
         
         public var title: String {
             "Trigger.title.\(self)"

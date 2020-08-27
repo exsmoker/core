@@ -1,12 +1,8 @@
 import Foundation
 
-public enum Reason: CaseIterable, Identifiable {
+public enum Reason: CaseIterable {
     case
     health_respiratory
-    
-    public var id: Self {
-        self
-    }
     
     public var image: String {
         "reason_\(self)"
