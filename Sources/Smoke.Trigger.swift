@@ -3,13 +3,14 @@ import Foundation
 extension Smoke {
     public enum Trigger: String, Codable, CaseIterable {
         case
-        somebodySmoking,
+        somebody,
+        offered,
         bored,
         anxious,
         nervous,
-        feelLike,
-        doNotKnow,
-        noReason,
+        want,
+        dont,
+        none,
         cold,
         tired
         
