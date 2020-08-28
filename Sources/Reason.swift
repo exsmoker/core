@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Reason: CaseIterable {
+public enum Reason: Int, Codable, CaseIterable {
     case
     health_respiratory
     

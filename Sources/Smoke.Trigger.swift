@@ -3,6 +3,7 @@ import Foundation
 extension Smoke {
     public enum Trigger: Int, Codable, CaseIterable {
         case
+        none,
         people,
         offered,
         bored,
@@ -10,9 +11,13 @@ extension Smoke {
         nervous,
         want,
         dont,
-        none,
         cold,
-        tired
+        tired,
+        angry,
+        sad,
+        scared,
+        hungry,
+        lonely
         
         public var title: String {
             "Trigger.title.\(self)"
