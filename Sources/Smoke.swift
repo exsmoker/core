@@ -1,7 +1,7 @@
 import Foundation
 
 public final class Smoke {
-    public var hits = [Date]()
+    public var hits = [Hit]()
     private let formatter = DateComponentsFormatter()
     
     public init() {
@@ -10,6 +10,6 @@ public final class Smoke {
     }
     
     public var streak: String {
-        formatter.string(from: hits.last!, to: .init())!
+        formatter.string(from: hits.last!.date, to: .init())!
     }
 }

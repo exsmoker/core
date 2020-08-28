@@ -17,7 +17,8 @@ extension Smoke {
         sad,
         scared,
         hungry,
-        lonely
+        lonely,
+        ate
         
         public var title: String {
             "Trigger.title.\(self)"
