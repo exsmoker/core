@@ -2,7 +2,8 @@ import Foundation
 
 public enum Reason: Int, Codable, CaseIterable, Identifiable {
     case
-    health_respiratory
+    respiratory,
+    smile
     
     public var id: Self {
         self
@@ -12,15 +13,18 @@ public enum Reason: Int, Codable, CaseIterable, Identifiable {
         "reason_\(self)"
     }
     
-    public var title: String {
-        "Reason.title.\(self)"
-    }
-    
-    public var subtitle: String {
-        "Reason.subtitle.\(self)"
+    public var name: String {
+        "Reason.name.\(self)"
     }
     
     public var description: String {
         "Reason.description.\(self)"
+    }
+    
+    public var category: Category {
+        switch self {
+        case .respiratory: return .health
+        case .smile: return .aesthetic
+        }
     }
 }
