@@ -3,7 +3,8 @@ import Foundation
 public enum Reason: Int, Codable, CaseIterable, Identifiable {
     case
     respiratory,
-    smile
+    smile,
+    c02
     
     public var id: Self {
         self
@@ -25,6 +26,7 @@ public enum Reason: Int, Codable, CaseIterable, Identifiable {
         switch self {
         case .respiratory: return .health
         case .smile: return .aesthetic
+        case .c02: return .environment
         }
     }
 }

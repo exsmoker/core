@@ -4,7 +4,8 @@ extension Reason {
     public enum Category: CaseIterable {
         case
         health,
-        aesthetic
+        aesthetic,
+        environment
         
         public var name: String {
             "Category.name.\(self)"
