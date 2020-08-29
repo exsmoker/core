@@ -5,5 +5,9 @@ extension Reason {
         case
         health,
         aesthetic
+        
+        public var name: String {
+            "Category.name.\(self)"
+        }
     }
 }
