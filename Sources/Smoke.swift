@@ -12,4 +12,10 @@ public final class Smoke {
     public var streak: String {
         formatter.string(from: info.hits.last!.date, to: .init())!
     }
+    
+    public func cigarettes(_ range: Range) -> [Double] {
+        info.hits.filter { $0.date > range.since }.map { _ in
+            1
+        }
+    }
 }
