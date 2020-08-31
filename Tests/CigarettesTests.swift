@@ -29,7 +29,24 @@ final class CigarettesTests: XCTestCase {
                            .init(.none, date: Calendar.current.date(byAdding: .day, value: -5 * (7 * 4), to: .init())!),
                            .init(.none, date: Calendar.current.date(byAdding: .day, value: -5 * (7 * 3), to: .init())!),
                            .init(.none, date: Calendar.current.date(byAdding: .day, value: -5 * (7 * 2), to: .init())!),
-                           .init(.none, date: Calendar.current.date(byAdding: .day, value: -6, to: .init())!)]
+                           .init(.none, date: .init())]
         XCTAssertEqual([0, 0, 0, 0, 1], smoke.cigarettes(.weeks))
+    }
+    
+    func testClamp() {
+        smoke.info.hits = [.init(.none, date: Calendar.current.date(byAdding: .hour, value: -1, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -1, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -2, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -3, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -3, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -1, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -6, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -7, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -8, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -1, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -3, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -4, to: .init())!),
+                           .init(.none, date: Calendar.current.date(byAdding: .hour, value: -4, to: .init())!),]
+        XCTAssertEqual([0.5, 0.75, 0.25, 1, 0], smoke.cigarettes(.hours))
     }
 }

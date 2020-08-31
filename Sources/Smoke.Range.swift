@@ -15,25 +15,27 @@ extension Smoke {
             var items = self.items
             hits.map {
                 components($0.date)
-            }.forEach {
-                items[$0]? += 1
+            }.forEach { hit in
+                items.firstIndex { $0.0 == hit }.map {
+                    items[$0].1 += 1
+                }
             }
             
-            items.values.max()
-            items.map(<#T##transform: ((key: DateComponents, value: Int)) throws -> T##((key: DateComponents, value: Int)) throws -> T#>)
-            
-            return [0, 0, 0, 0, 0]
+            let max = items.max { $0.1 < $1.1 }!.1
+            return items.map {
+                max == 0 ? 0 : $0.1 / max
+            }
         }
         
         private func components(_ date: Date) -> DateComponents {
             Calendar.current.dateComponents(components, from: date)
         }
         
-        private var items: [DateComponents : Int] {
+        private var items: [(DateComponents, Double)] {
             (0 ... 4).reversed().map {
                 Calendar.current.date(byAdding: component, value: -$0, to: .init())!
-            }.map(components).reduce(into: [:]) {
-                $0[$1] = 0
+            }.map(components).reduce(into: []) {
+                $0.append(($1, 0))
             }
         }
         
