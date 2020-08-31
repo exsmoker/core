@@ -8,7 +8,11 @@ extension Smoke {
         weeks
         
         public var title: String {
-            "Range.name.\(self)"
+            "Range.title.\(self)"
+        }
+        
+        public var limit: String {
+            "Range.limit.\(self)"
         }
         
         func filter(_ hits: [Hit]) -> [Double] {
