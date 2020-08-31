@@ -11,11 +11,33 @@ extension Smoke {
             "Range.name.\(self)"
         }
         
-        var since: Date {
+        func filter(_ hits: [Hit]) -> [Double] {
+            [0, 0, 0, 0, 0]
+        }
+        
+        private func components(_ date: Date) -> DateComponents {
+            Calendar.current.dateComponents(components, from: date)
+        }
+        
+        private var items: [DateComponents] {
+            (0 ... 4).reversed().map {
+                Calendar.current.date(byAdding: component, value: -$0, to: .init())!
+            }.map(components)
+        }
+        
+        private var components: Set<Calendar.Component> {
             switch self {
-            case .hours: return Calendar.current.date(byAdding: .hour, value: -6, to: .init())!
-            case .days: return Calendar.current.date(byAdding: .day, value: -6, to: .init())!
-            case .weeks: return Calendar.current.date(byAdding: .weekOfMonth, value: -6, to: .init())!
+            case .hours: return [.hour, .day, .month, .year]
+            case .days: return [.day, .month, .year]
+            case .weeks: return [.weekOfMonth, .month, .year]
+            }
+        }
+        
+        private var component: Calendar.Component {
+            switch self {
+            case .hours: return .hour
+            case .days: return .day
+            case .weeks: return .weekOfMonth
             }
         }
     }

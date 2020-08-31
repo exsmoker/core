@@ -14,8 +14,6 @@ public final class Smoke {
     }
     
     public func cigarettes(_ range: Range) -> [Double] {
-        info.hits.filter { $0.date > range.since }.map { _ in
-            1
-        }
+        range.filter(info.hits)
     }
 }
