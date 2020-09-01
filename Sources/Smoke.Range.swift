@@ -47,7 +47,7 @@ extension Smoke {
             switch self {
             case .hours: return [.hour, .day, .month, .year]
             case .days: return [.day, .month, .year]
-            case .weeks: return [.weekOfMonth, .month, .year]
+            case .weeks: return [.weekOfYear, .year]
             }
         }
         
@@ -55,7 +55,7 @@ extension Smoke {
             switch self {
             case .hours: return .hour
             case .days: return .day
-            case .weeks: return .weekOfMonth
+            case .weeks: return .weekOfYear
             }
         }
     }
