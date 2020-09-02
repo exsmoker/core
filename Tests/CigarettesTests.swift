@@ -9,9 +9,9 @@ final class CigarettesTests: XCTestCase {
     }
     
     func testEmpty() {
-        XCTAssertEqual([0, 0, 0, 0, 0], smoke.cigarettes(.hours))
-        XCTAssertEqual([0, 0, 0, 0, 0], smoke.cigarettes(.days))
-        XCTAssertEqual([0, 0, 0, 0, 0], smoke.cigarettes(.weeks))
+        XCTAssertEqual([0, 0, 0, 0, 1], smoke.cigarettes(.hours))
+        XCTAssertEqual([0, 0, 0, 0, 1], smoke.cigarettes(.days))
+        XCTAssertEqual([0, 0, 0, 0, 1], smoke.cigarettes(.weeks))
     }
     
     func testOne() {
