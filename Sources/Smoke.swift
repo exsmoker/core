@@ -16,4 +16,8 @@ public final class Smoke {
     public func cigarettes(_ range: Range) -> [Double] {
         range.filter(info.hits)
     }
+    
+    public func cravings(_ range: Range) -> [Double] {
+        range.filter(info.cravings)
+    }
 }

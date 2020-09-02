@@ -9,5 +9,10 @@ extension Smoke {
             self.reason = reason
             date = .init()
         }
+        
+        init(_ reason: Reason?, date: Date) {
+            self.reason = reason
+            self.date = date
+        }
     }
 }

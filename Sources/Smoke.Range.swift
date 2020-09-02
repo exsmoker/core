@@ -31,6 +31,22 @@ extension Smoke {
             }
         }
         
+        func filter(_ cravings: [Craving]) -> [Double] {
+            var items = self.items
+            cravings.map {
+                components($0.date)
+            }.forEach { hit in
+                items.firstIndex { $0.0 == hit }.map {
+                    items[$0].1 += 1
+                }
+            }
+            
+            let max = items.max { $0.1 < $1.1 }!.1
+            return items.map {
+                max == 0 ? 0 : $0.1 / max
+            }
+        }
+        
         private func components(_ date: Date) -> DateComponents {
             Calendar.current.dateComponents(components, from: date)
         }
