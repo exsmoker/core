@@ -6,5 +6,13 @@ extension User {
         euro,
         dollar,
         pound
+        
+        public var symbol: String {
+            switch self {
+            case .euro: return "€"
+            case .dollar: return "$"
+            case .pound: return "£"
+            }
+        }
     }
 }
