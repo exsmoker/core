@@ -3,8 +3,7 @@ import Foundation
 extension Smoke {
     public struct Info: Codable, Equatable {
         public var hits = [Hit]()
-        public var reasons = [Reason]()
-        public var useful = [Bool]()
+        public var cravings = [Craving]()
         
         public func hash(into: inout Hasher) { }
         
