@@ -29,7 +29,7 @@ public final class Smoke {
         info.hits.first.flatMap {
             Calendar.current.dateComponents([.day], from: $0.date, to: .init()).day
         }.map {
-            user.quantity * $0
+            user.quantity * ($0 + 1)
         } ?? 0
     }
 }

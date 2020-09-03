@@ -18,7 +18,7 @@ final class SavingsTests: XCTestCase {
     func testOne() {
         user.quantity = 1
         user.price = 1
-        smoke.info.hits = [.init(.none, date: Calendar.current.date(byAdding: .day, value: -2, to: .init())!)]
+        smoke.info.hits = [.init(.none, date: Calendar.current.date(byAdding: .day, value: -1, to: .init())!)]
         XCTAssertEqual(1, smoke.savings(user))
     }
 }
