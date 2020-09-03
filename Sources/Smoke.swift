@@ -20,4 +20,8 @@ public final class Smoke {
     public func cravings(_ range: Range) -> [Double] {
         range.filter(info.cravings)
     }
+    
+    public func savings(_ user: User) -> Double {
+        0
+    }
 }
