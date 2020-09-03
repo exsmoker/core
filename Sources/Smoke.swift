@@ -25,6 +25,10 @@ public final class Smoke {
         .init(max(expectedHits(user) - info.hits.count, 0)) * user.price
     }
     
+    public var success: Double {
+        info.cravings.isEmpty ? 0 : .init(info.cravings.filter { $0.reason != nil }.count) / .init(info.cravings.count)
+    }
+    
     private func expectedHits(_ user: User) -> Int {
         info.hits.first.flatMap {
             Calendar.current.dateComponents([.day], from: $0.date, to: .init()).day
