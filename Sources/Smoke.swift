@@ -22,6 +22,14 @@ public final class Smoke {
     }
     
     public func savings(_ user: User) -> Double {
-        0
+        .init(max(expectedHits(user) - info.hits.count, 0)) * user.price
+    }
+    
+    private func expectedHits(_ user: User) -> Int {
+        info.hits.first.flatMap {
+            Calendar.current.dateComponents([.day], from: $0.date, to: .init()).day
+        }.map {
+            user.quantity * $0
+        } ?? 0
     }
 }
