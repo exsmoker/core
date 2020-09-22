@@ -29,14 +29,14 @@ public final class Smoke {
         info.cravings.isEmpty ? 0 : .init(info.cravings.filter { $0.reason != nil }.count) / .init(info.cravings.count)
     }
     
-    public var top: [(Reason, Double)] {
+    public var top: [Reason.Rating] {
         info.cravings.reduce(into: [Reason : Int]()) {
             guard let reason = $1.reason else { return }
             $0[reason, default: 0] += 1
         }.map {
-            ($0.0, .init($0.1) / .init(info.cravings.filter { $0.reason != nil && $0.reason != .none }.count))
+            .init(reason: $0.0, percent: .init($0.1) / .init(info.cravings.filter { $0.reason != nil && $0.reason != .none }.count))
         }.sorted {
-            $0.1 == $1.1 ? $0.0.rawValue > $1.0.rawValue : $0.1 > $1.1
+            $0.percent == $1.percent ? $0.reason.rawValue > $1.reason.rawValue : $0.percent > $1.percent
         }
     }
     

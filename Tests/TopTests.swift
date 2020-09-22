@@ -10,7 +10,7 @@ final class TopTests: XCTestCase {
         user = .init()
     }
     
-    func testRate() {
+    func testRating() {
         XCTAssertTrue(smoke.top.isEmpty)
         smoke.info.cravings = [.init(nil)]
         XCTAssertTrue(smoke.top.isEmpty)
@@ -18,15 +18,15 @@ final class TopTests: XCTestCase {
         XCTAssertTrue(smoke.top.isEmpty)
         smoke.info.cravings = [.init(.c02)]
         XCTAssertEqual(1, smoke.top.count)
-        XCTAssertEqual(.c02, smoke.top.first?.0)
-        XCTAssertEqual(1, smoke.top.first?.1)
+        XCTAssertEqual(.c02, smoke.top[0].reason)
+        XCTAssertEqual(1, smoke.top[0].percent)
         smoke.info.cravings = [.init(.c02), .init(.respiratory), .init(.smile), .init(.c02)]
         XCTAssertEqual(3, smoke.top.count)
-        XCTAssertEqual(.c02, smoke.top[0].0)
-        XCTAssertEqual(0.5, smoke.top[0].1)
-        XCTAssertEqual(.smile, smoke.top[1].0)
-        XCTAssertEqual(0.25, smoke.top[1].1)
-        XCTAssertEqual(.respiratory, smoke.top[2].0)
-        XCTAssertEqual(0.25, smoke.top[2].1)
+        XCTAssertEqual(.c02, smoke.top[0].reason)
+        XCTAssertEqual(0.5, smoke.top[0].percent)
+        XCTAssertEqual(.smile, smoke.top[1].reason)
+        XCTAssertEqual(0.25, smoke.top[1].percent)
+        XCTAssertEqual(.respiratory, smoke.top[2].reason)
+        XCTAssertEqual(0.25, smoke.top[2].percent)
     }
 }
