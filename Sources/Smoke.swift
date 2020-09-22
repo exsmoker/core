@@ -40,6 +40,10 @@ public final class Smoke {
         }
     }
     
+    public var trends: [Trend] {
+        []
+    }
+    
     private func expectedHits(_ user: User) -> Int {
         info.hits.first.flatMap {
             Calendar.current.dateComponents([.day], from: $0.date, to: .init()).day

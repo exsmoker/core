@@ -3,24 +3,22 @@ import XCTest
 
 final class TopTests: XCTestCase {
     private var smoke: Smoke!
-    private var user: User!
     
     override func setUp() {
         smoke = .init()
-        user = .init()
     }
     
     func testRating() {
         XCTAssertTrue(smoke.top.isEmpty)
-        smoke.info.cravings = [.init(nil)]
+        smoke.info.cravings = [.init(.none, nil)]
         XCTAssertTrue(smoke.top.isEmpty)
-        smoke.info.cravings = [.init(.none)]
+        smoke.info.cravings = [.init(.none, .none)]
         XCTAssertTrue(smoke.top.isEmpty)
-        smoke.info.cravings = [.init(.c02)]
+        smoke.info.cravings = [.init(.none, .c02)]
         XCTAssertEqual(1, smoke.top.count)
         XCTAssertEqual(.c02, smoke.top[0].reason)
         XCTAssertEqual(1, smoke.top[0].percent)
-        smoke.info.cravings = [.init(.c02), .init(.respiratory), .init(.smile), .init(.c02)]
+        smoke.info.cravings = [.init(.none, .c02), .init(.none, .respiratory), .init(.none, .smile), .init(.none, .c02)]
         XCTAssertEqual(3, smoke.top.count)
         XCTAssertEqual(.c02, smoke.top[0].reason)
         XCTAssertEqual(0.5, smoke.top[0].percent)
