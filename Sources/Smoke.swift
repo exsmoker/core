@@ -41,7 +41,17 @@ public final class Smoke {
     }
     
     public var trends: [Trend] {
-        []
+        { triggers in
+            triggers.map {
+                .init(trigger: $0.0, percent: .init($0.1) / .init(triggers.map(\.value).reduce(0, +)))
+            }.sorted {
+                $0.percent == $1.percent ? $0.trigger.rawValue > $1.trigger.rawValue : $0.percent > $1.percent
+            }
+        } ((info.cravings.map(\.trigger) + info.hits.map(\.trigger))
+            .filter { $0 != .none }
+            .reduce(into: [Trigger : Int]()) {
+                $0[$1, default: 0] += 1
+            })
     }
     
     private func expectedHits(_ user: User) -> Int {
