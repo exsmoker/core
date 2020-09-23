@@ -18,7 +18,8 @@ extension Smoke {
         scared,
         hungry,
         lonely,
-        ate
+        ate,
+        social
         
         public var id: Self {
             self
